@@ -1,0 +1,86 @@
+/* Home page enhancements (plain CSS, no libraries). Only affects index.html */
+.site-header{position:sticky;top:0;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:box-shadow .25s}
+.site-header.scrolled{box-shadow:0 8px 28px #1e555a14}
+.site-header nav a{position:relative}
+.site-header nav a:after{content:'';position:absolute;left:0;bottom:2px;height:2px;width:0;background:var(--teal);border-radius:2px;transition:width .25s}
+.site-header nav a:hover:after,.site-header nav a.active:after{width:100%}
+.btn span,.text-link span{display:inline-block;transition:transform .2s}
+.btn:hover span,.text-link:hover span{transform:translateX(4px)}
+.text-link:last-child:hover{color:var(--teal-dark)}
+a:focus-visible,.btn:focus-visible{outline:3px solid #8fdcd1;outline-offset:3px;border-radius:10px}
+
+body{overflow-x:hidden}
+/* hero background */
+.hero{position:relative}
+.hero:before{content:'';position:absolute;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);z-index:-1;background:
+ radial-gradient(520px 320px at 85% 20%,#dff6f2 0,transparent 70%),
+ radial-gradient(420px 260px at 5% 90%,#eef5ff 0,transparent 70%),
+ radial-gradient(#d5e6e5 1px,transparent 1px) 0 0/26px 26px;
+ -webkit-mask-image:linear-gradient(#000 60%,transparent);mask-image:linear-gradient(#000 60%,transparent);opacity:.9}
+.hero-copy>*{animation:rise .7s both}
+.hero-copy>*:nth-child(1){animation-delay:.05s}.hero-copy>*:nth-child(2){animation-delay:.15s}.hero-copy>*:nth-child(3){animation-delay:.25s}.hero-copy>*:nth-child(4){animation-delay:.35s}.hero-copy>*:nth-child(5){animation-delay:.45s}.hero-copy>*:nth-child(6){animation-delay:.55s}
+.hero-visual{animation:rise .9s .25s both}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.gradient-text{background-size:200% 100%;animation:shine 6s ease-in-out infinite alternate}
+@keyframes shine{to{background-position:100% 0}}
+.pulse-dot{animation:ping 1.8s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 #20b99d66}80%,100%{box-shadow:0 0 0 8px #20b99d00}}
+
+.hero-points{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px 18px;font-size:12px;font-weight:600;color:#4d6872}
+.hero-points li:before{content:'✓';display:inline-grid;place-items:center;width:17px;height:17px;margin-right:7px;border-radius:50%;background:#dff5ef;color:#118a7e;font-size:10px;font-weight:800}
+.trust-row{margin-top:30px}
+
+/* preview card live feel */
+.dashboard-preview{animation:bob 7s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:rotate(-2deg) translateY(0)}50%{transform:rotate(-2deg) translateY(-8px)}}
+.dashboard-preview.swap .preview-card,.dashboard-preview.swap .preview-stats{opacity:0;transform:translateY(6px)}
+.preview-card,.preview-stats{transition:opacity .3s,transform .3s}
+.progress-track span{transition:width 1s cubic-bezier(.2,.8,.2,1);position:relative}
+.progress-track span:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,#ffffff80,transparent);animation:sweep 2.2s infinite}
+@keyframes sweep{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+.floating-card{animation:drift 5s ease-in-out infinite}
+.float-two{animation-delay:-2.5s}
+@keyframes drift{0%,100%{translate:0 0}50%{translate:0 -9px}}
+.visual-glow{animation:glow 5s ease-in-out infinite}
+@keyframes glow{50%{transform:scale(1.08);opacity:.8}}
+
+/* stats strip */
+.stats-strip{display:grid;grid-template-columns:repeat(4,1fr);margin-top:-34px;margin-bottom:6px;padding:0;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);position:relative;z-index:1;width:calc(100% - 44px)}
+.stats-strip>div{padding:24px 20px;text-align:center;border-right:1px solid var(--line)}
+.stats-strip>div:last-child{border-right:0}
+.stats-strip b{display:block;font:800 32px Manrope;letter-spacing:-1px;color:var(--teal-dark)}
+.stats-strip span{font-size:11px;color:var(--muted)}
+.stats-strip i{display:none}
+.features-section{margin-top:-30px;padding-top:110px}
+
+/* feature cards polish */
+.feature-card{position:relative;overflow:hidden}
+.feature-card:before{content:'';position:absolute;left:0;top:0;height:3px;width:0;background:linear-gradient(90deg,#12a99c,#7ad3c8);transition:width .35s}
+.feature-card:hover:before{width:100%}
+.feature-icon{transition:transform .25s}
+.feature-card:hover .feature-icon{transform:scale(1.1) rotate(-5deg)}
+
+/* departments */
+.dept-section{margin-top:70px}
+.dept-row{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:34px}
+.dept-chip{display:grid;grid-template-columns:50px 1fr;column-gap:16px;align-items:center;padding:22px 24px;background:#fff;border:1px solid var(--line);border-radius:15px;transition:.25s}
+.dept-chip i{grid-row:1/3;width:50px;height:50px;border-radius:14px;background:var(--pale);color:var(--teal-dark);display:grid;place-items:center;font-size:24px;font-style:normal;transition:.25s}
+.dept-chip b{font:700 16px Manrope}
+.dept-chip small{color:var(--muted);font-size:12px;margin-top:3px}
+.dept-chip:hover{transform:translateY(-4px);border-color:#a9ddd6;box-shadow:var(--shadow)}
+.dept-chip:hover i{background:var(--teal);color:#fff}
+
+/* CTA */
+.cta-section{position:relative;overflow:hidden}
+.cta-section:after{content:'✚';position:absolute;right:-20px;top:-40px;font-size:190px;color:#ffffff0d;pointer-events:none}
+.cta-section>*{position:relative;z-index:1}
+
+/* scroll reveal */
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.in{opacity:1;transform:none}
+.js .feature-grid .reveal:nth-child(2){transition-delay:.1s}
+.js .feature-grid .reveal:nth-child(3){transition-delay:.2s}
+
+@media(max-width:800px){.stats-strip{grid-template-columns:repeat(2,1fr)}.stats-strip>div:nth-child(2){border-right:0}.stats-strip>div:nth-child(-n+2){border-bottom:1px solid var(--line)}.dept-row{grid-template-columns:1fr}}
+@media(max-width:560px){.hero-points{gap:6px 14px}.stats-strip{margin-top:-14px}.stats-strip b{font-size:26px}.site-header{height:70px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}}
